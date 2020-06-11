@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.9)
-project(DBSCAN VERSION 1.0.1 DESCRIPTION "A C++ implementation of DBSCAN")
+project(DBSCAN VERSION 1.0.0 DESCRIPTION "A simple C++ implementation of DBSCAN")
 
 add_library(
     DBSCAN SHARED
