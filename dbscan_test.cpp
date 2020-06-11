@@ -14,7 +14,7 @@ std::vector<std::string> splitLine(std::string, char);
 
 int main(int argc, char const *argv[]) {
     if (argc < 4) {
-        std::cout << "Usage: " << argv[0] << " FILE.csv eps minPts" << std::endl;
+        std::cout << "Usage: " << argv[0] << " INPUT.csv eps minPts" << std::endl;
         return 1;
     }
 
@@ -44,18 +44,7 @@ std::vector<dbscan::_3DPoint*>* loadMatrixFromCSVFile(std::string file_path) {
         inf.open(file_path);
 
         if (inf.is_open()) {
-
-            int count = std::count(
-                            std::istreambuf_iterator<char>(inf),
-                            std::istreambuf_iterator<char>(),
-                            '\n'
-                        );
-
-            inf.clear();
-            inf.seekg(0, std::ios::beg);
-
-            mat = new std::vector<dbscan::_3DPoint*>;
-
+            mat = new std::vector<dbscan::_3DPoint*>();
             while (getline(inf, line)) {
                 splited = splitLine(line, ',');
                 if (splited.size() == 3) {
@@ -68,7 +57,6 @@ std::vector<dbscan::_3DPoint*>* loadMatrixFromCSVFile(std::string file_path) {
                     );
                 }
             }
-
             inf.close();
         }
     }
